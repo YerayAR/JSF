@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS calculations (
+    id SERIAL PRIMARY KEY,
+    operand1 DOUBLE PRECISION NOT NULL,
+    operand2 DOUBLE PRECISION NOT NULL,
+    operation VARCHAR(5) NOT NULL,
+    result DOUBLE PRECISION NOT NULL,
+    timestamp TIMESTAMP NOT NULL
+);
