@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Calculator</title>
+</h:head>
+<h:body>
+<h:form>
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:outputLabel for="op1" value="Operand 1:"/>
+        <h:inputText id="op1" value="#{calculatorBean.operand1}" required="true"/>
+
+        <h:outputLabel for="op2" value="Operand 2:"/>
+        <h:inputText id="op2" value="#{calculatorBean.operand2}" required="true"/>
+
+        <h:outputLabel for="operation" value="Operation:"/>
+        <h:selectOneMenu id="operation" value="#{calculatorBean.operation}">
+            <f:selectItem itemValue="+" itemLabel="+"/>
+            <f:selectItem itemValue="-" itemLabel="-"/>
+            <f:selectItem itemValue="*" itemLabel="*"/>
+            <f:selectItem itemValue="/" itemLabel="/"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:commandButton value="Calculate" action="#{calculatorBean.calculate}"/>
+    <h:outputText value="Result: #{calculatorBean.result}" style="margin-left:10px"/>
+</h:form>
+
+<h2>History</h2>
+<h:dataTable value="#{calculatorBean.history}" var="item" border="1">
+    <h:column>
+        <f:facet name="header">Operand1</f:facet>
+        #{item.operand1}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Operation</f:facet>
+        #{item.operation}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Operand2</f:facet>
+        #{item.operand2}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Result</f:facet>
+        #{item.result}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Time</f:facet>
+        #{item.timestamp}
+    </h:column>
+</h:dataTable>
+</h:body>
+</html>
